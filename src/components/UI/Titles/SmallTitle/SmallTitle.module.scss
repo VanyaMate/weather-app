@@ -1,0 +1,9 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.title {
+    font-size: 16px;
+    color: $white;
+    padding-bottom: $mediumOffset;
+    margin-bottom: $mediumOffset;
+}

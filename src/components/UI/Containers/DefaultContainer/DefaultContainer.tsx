@@ -1,10 +1,8 @@
 import React from 'react';
-import {IDefaultComponent} from "../../defaultComponent.interface";
+import {IDefaultComponent} from "../../../defaultComponent.interface";
 import css from './DefaultContainer.module.scss';
 
-export interface IDefaultContainer extends IDefaultComponent {}
-
-const DefaultContainer = (props: IDefaultContainer) => {
+const DefaultContainer = (props: IDefaultComponent) => {
     const { className, ...other } = props;
 
     return (

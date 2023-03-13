@@ -1,0 +1,38 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    .icon {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .desc {
+        margin-bottom: $mediumOffset;
+    }
+
+    .temperature {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .feels {
+        font-size: 14px;
+        text-align: center;
+        color: $gray;
+
+        span {
+            color: $lightGray;
+            font-size: 16px;
+        }
+    }
+}

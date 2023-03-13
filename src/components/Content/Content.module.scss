@@ -7,5 +7,20 @@
 
     .content {
         width: $contentWidth;
+
+        .threeInRow {
+            display: flex;
+            margin-top: $smallOffset;
+
+            & > * {
+                width: calc(100% / 3);
+
+                margin-right: $smallOffset;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
     }
 }

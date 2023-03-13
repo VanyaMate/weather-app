@@ -1,8 +1,8 @@
-@import "src/consts/dark-theme-colors";
-@import "src/consts/sizes";
+@import "../../../../consts/dark-theme-colors";
+@import "../../../../consts/sizes";
 
 .container {
-    padding: $mediumOffset;
+    padding: $bigOffset;
     background: $grayBlack;
     color: $white;
     border-radius: $mediumOffset;

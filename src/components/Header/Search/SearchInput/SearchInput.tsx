@@ -13,7 +13,7 @@ export interface ISearchInput extends IDefaultComponent {}
 const SearchInput = (props: ISearchInput) => {
     const searchInput = useInputValue<string>('', (s: string) => s.length > 2);
     const debounce = useDebounce<string>(searchInput.current, 400);
-    const {setSearchQuery, setCurrentYandexQuery} = useActions();
+    const {setSearchQuery, setCurrentYandexQuery, setCurrentPointWeather} = useActions();
     const [dispatchGetPoint] = useLazyGetPointByNameQuery();
     const [dispatchGetWeather] = useLazyWeatherPointQuery();
 
@@ -31,11 +31,15 @@ const SearchInput = (props: ISearchInput) => {
                         return convertYandexCoordsToWeatherCoords(pos);
                     }
 
-                    throw new Error('Неправильный запрос');
+                    throw new Error('Ошибка запроса координат');
                 })
                 .then(dispatchGetWeather)
                 .then(({ data }) => {
-                    console.log('weather data', data);
+                    if (data) {
+                        return setCurrentPointWeather(data);
+                    }
+
+                    throw new Error('Ошибка запроса погоды по координатам');
                 })
                 .catch((e) => {
                     console.log(e);

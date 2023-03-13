@@ -1,0 +1,15 @@
+@import "src/consts/sizes";
+
+.container {
+    &.m > * {
+        margin-top: $mediumOffset;
+    }
+
+    & > * {
+        margin-top: $smallOffset;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}

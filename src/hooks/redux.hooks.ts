@@ -3,10 +3,12 @@ import {StoreType} from "../store/index.store";
 import {bindActionCreators} from "@reduxjs/toolkit";
 import {searchActions} from "../store/search/search.slice";
 import {yandexActions} from "../store/yandex/yandex.slice";
+import {weatherActions} from "../store/weather/weather.slice";
 
 const actions = {
     ...searchActions,
-    ...yandexActions
+    ...yandexActions,
+    ...weatherActions
 }
 
 export const useMySelector: TypedUseSelectorHook<StoreType> = useSelector;
