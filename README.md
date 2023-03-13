@@ -11,4 +11,4 @@ Url:
 - **SCSS**
 
 
-- ***openweathermap.org* api**
+- ***weatherapi.com* api**
