@@ -1,10 +1,10 @@
-#Weather APP
+# Weather APP
 
 Сборщик: **Vite**
 
 Url: 
 
-###Frontend
+### Frontend
 - **Typescript**
 - **React**
 - **Redux / Redux Toolkit / Redux Toolkit Query**
