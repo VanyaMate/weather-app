@@ -1,0 +1,36 @@
+$darkBlack: #111625;
+$grayBlack: #1d2131;
+$lightBlack: #27283b;
+
+$gray: #555;
+$lightGray: #aaa;
+$white: #eee;
+
+$markRedDark: #422;
+$markRedLight: #f77;
+$markBlueDark: #215;
+$markBlueLight: #77f;
+$markGreenDark: #242;
+$markGreenLight: #8ce88c;
+$markOrangeDark: #541;
+$markOrangeLight: #f72;
+
+$contentWidth: 800px;
+
+$smallOffset: 5px;
+$mediumOffset: 10px;
+$bigOffset: 20px;
+
+$defaultBoxShadow: 0 4px 10px -4px rgb(0 0 0 / 100%);
+
+@keyframes loading {
+    0% {
+        opacity: .8;
+    }
+    50% {
+        opacity: .4;
+    }
+    100% {
+        opacity: .8;
+    }
+}
