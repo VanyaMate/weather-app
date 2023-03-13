@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import css from './App.module.scss';
 import {useLazyDirectQuery} from "./store/weather/weather.api";
-import {SECRET_WEATHER_API_KEY} from "./consts/secret";
+import {SECRET_WEATHER_API_KEY} from "./consts/secret-keys";
 
 const App = () => {
     const [value, setValue] = useState<string>('');

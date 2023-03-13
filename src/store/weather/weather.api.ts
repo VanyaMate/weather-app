@@ -12,7 +12,7 @@ export interface IWeatherDirectItem {
 export const weatherApi = createApi({
     reducerPath: 'weather/api',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://api.openweathermap.org/geo/1.0/'
+        baseUrl: 'http://api.weatherapi.com/v1'
     }),
     endpoints: (build) => ({
         direct: build.query<
