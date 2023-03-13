@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Yandex} from "./yandex.interfaces";
+import * as Yandex from "./yandex.interfaces";
 
 export interface IYandexState {
     current: Yandex.GeoObject | null,

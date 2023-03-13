@@ -2,7 +2,7 @@
 
 Сборщик: **Vite**
 
-Url: 
+Url: https://vm-weather.web.app
 
 ### Frontend
 - **Typescript**
