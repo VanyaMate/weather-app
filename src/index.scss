@@ -1,3 +1,5 @@
+@import "./src/consts/dark-theme-colors";
+
 * {
     padding: 0;
     margin: 0;
@@ -6,4 +8,6 @@
 
 body {
     font-size: 14px;
+    background: $darkBlack;
+    font-family: 'Arial', 'Verdana';
 }

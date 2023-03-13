@@ -1,0 +1,33 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > * {
+        margin-left: $mediumOffset;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    .names {
+        .city {
+            font-size: 20px;
+        }
+
+        .country {
+            font-size: 14px;
+            color: $lightGray;
+        }
+    }
+
+    .geoPoint {
+        font-size: 14px;
+        color: $gray;
+        text-align: right;
+    }
+}

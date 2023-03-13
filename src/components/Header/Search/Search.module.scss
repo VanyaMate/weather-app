@@ -1,0 +1,29 @@
+@import "src/consts/sizes";
+
+$buttonsWidth: calc(#{$mediumHeight} * 2 + #{$smallOffset});
+$inputWidth: calc(100% - #{$buttonsWidth} - #{$smallOffset});
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .input {
+        width: $inputWidth;
+    }
+
+    .buttons {
+        width: $buttonsWidth;
+        display: flex;
+        justify-content: space-between;
+        margin-left: $smallOffset;
+
+        .addButton {
+            width: $mediumHeight;
+        }
+
+        .openButton {
+            width: $mediumHeight;
+        }
+    }
+}

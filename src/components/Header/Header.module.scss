@@ -1,0 +1,21 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.header {
+    height: $bigHeight;
+    display: flex;
+    justify-content: center;
+
+    .content {
+        width: $contentWidth;
+        background: $grayBlack;
+        height: 100%;
+        padding: $mediumOffset;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 0 $mediumOffset $mediumOffset;
+        box-shadow: $defaultBoxShadow;
+    }
+}

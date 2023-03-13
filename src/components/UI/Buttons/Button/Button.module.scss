@@ -1,0 +1,53 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.button {
+    padding: 0 $mediumOffset;
+    height: $mediumHeight;
+    border: 1px solid transparent;
+    color: $gray;
+    outline: none;
+    background: $darkBlack;
+    border-radius: $mediumOffset;
+    user-select: none;
+    pointer-events: none;
+    cursor: pointer;
+    width: 100%;
+
+    transition: .1s;
+
+    &.active {
+        pointer-events: auto;
+        color: $lightGray;
+
+        &:hover {
+            border: 1px solid $markBlueLight;
+            color: $white;
+        }
+    }
+
+    &.always {
+        pointer-events: auto;
+        color: $lightGray;
+        border: 1px solid $markBlueLight;
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    &.loading {
+        pointer-events: none;
+        animation: loading infinite .5s ease-in-out;
+    }
+
+    &.hidden {
+        width: 0;
+        border: 0 solid transparent;
+        padding: 0;
+    }
+
+    &:hover {
+        border: 1px solid $markBlueLight;
+    }
+}

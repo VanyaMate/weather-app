@@ -1,0 +1,11 @@
+@import "src/consts/sizes";
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: $mediumOffset;
+
+    .content {
+        width: $contentWidth;
+    }
+}

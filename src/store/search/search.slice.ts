@@ -29,7 +29,7 @@ export const searchSlice = createSlice({
     name: 'searchInput',
     initialState: initialState,
     reducers: {
-        saveQuery: (state, action: PayloadAction<string>) => {
+        saveSearchQuery: (state, action: PayloadAction<string>) => {
             state.savedQueries.queriesList.push({
                 original: action.payload,
                 match: action.payload.toLowerCase()
@@ -39,7 +39,7 @@ export const searchSlice = createSlice({
             }
             localStorage.setItem(storageName, JSON.stringify(state.savedQueries));
         },
-        removeSavedQuery: (state, action: PayloadAction<string>) => {
+        removeSearchSavedQuery: (state, action: PayloadAction<string>) => {
             state.savedQueries.queriesList.filter((query) => query.match !== action.payload.toLowerCase());
             if (state.savedQueries.general.toLowerCase() === action.payload.toLowerCase()) {
                 if (state.savedQueries.queriesList.length) {
@@ -48,11 +48,11 @@ export const searchSlice = createSlice({
             }
             localStorage.setItem(storageName, JSON.stringify(state.savedQueries));
         },
-        setGeneralQuery: (state, action: PayloadAction<string>) => {
+        setSearchGeneralQuery: (state, action: PayloadAction<string>) => {
             state.savedQueries.general = action.payload;
             localStorage.setItem(storageName, JSON.stringify(state.savedQueries));
         },
-        setQuery: (state, action: PayloadAction<string>) => {
+        setSearchQuery: (state, action: PayloadAction<string>) => {
             state.currentQuery = action.payload;
         }
     }

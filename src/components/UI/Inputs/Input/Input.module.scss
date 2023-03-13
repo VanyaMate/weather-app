@@ -1,0 +1,29 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: $white;
+    border-radius: $mediumOffset;
+    background: $darkBlack;
+    border: 1px solid transparent;
+    outline: none;
+    padding: 0 $mediumOffset;
+
+    transition: .1s;
+
+    &:focus {
+        border: 1px solid $markBlueLight;
+    }
+
+    .valid {
+
+    }
+
+    .invalid {
+
+    }
+}
