@@ -1,0 +1,1 @@
+export const STORAGE_PREFIX: string = `vm-weather_`;

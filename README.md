@@ -7,8 +7,9 @@ Url:
 ### Frontend
 - **Typescript**
 - **React**
-- **Redux / Redux Toolkit / Redux Toolkit Query**
+- **Redux Toolkit / Redux Toolkit Query**
 - **SCSS**
 
 
 - ***weatherapi.com* api**
+- ***geocode-maps.yandex.ru* api**

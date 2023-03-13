@@ -1,14 +1,25 @@
 import React, {useState} from 'react';
 import css from './App.module.scss';
-import {useLazyDirectQuery} from "./store/weather/weather.api";
-import {SECRET_WEATHER_API_KEY} from "./consts/secret-keys";
+import {useLazyWeatherPointQuery} from "./store/weather/weather.api";
+import {useLazyGetPointByNameQuery} from "./store/yandex/yandex.api";
 
 const App = () => {
     const [value, setValue] = useState<string>('');
-    const [dispatchDirect, { isFetching, data }] = useLazyDirectQuery();
+    const [dispatchDirect, { isFetching: pointFetching, data: weatherData }] = useLazyWeatherPointQuery();
+    const [dispatchGetPoint, { isFetching: geoFetching, data: geoData }] = useLazyGetPointByNameQuery()
 
     const getDirectByValue = function (value: string) {
-        dispatchDirect(`q=${value}&limit=10&appid=${SECRET_WEATHER_API_KEY}`);
+        dispatchGetPoint(value)
+            .then(({ data }) => {
+                const pos: string | undefined = data?.response.GeoObjectCollection.featureMember[0]?.GeoObject.Point.pos;
+                const validPos = pos ? pos.split(' ') : false;
+                if (pos) {
+                    return pos.split(' ').reverse().join(',')
+                }
+                throw new Error('Неправильный запрос');
+            })
+            .then(dispatchDirect)
+            .catch(e => console.log(e));
     }
 
     return (
@@ -16,14 +27,15 @@ const App = () => {
             <input type="text" value={value} onChange={(e) => setValue(e.target.value)}/>
             <button onClick={() => getDirectByValue(value)}>Query</button>
             {
-                isFetching ? 'Loading..' : ''
+                (pointFetching || geoFetching) ? 'Loading..' : ''
             }
             {
-                data ? data.map((item, index) => {
-                    return <div key={index}>
-                        [{item.country}] {(item.local_names && item.local_names['ru']) || item.name} ({item.lat} x {item.lon})
-                    </div>
-                }) : 'No find'
+                weatherData ? <div className={css.item}>
+                    {geoData!.response.GeoObjectCollection.featureMember[0].GeoObject.name},
+                    {geoData!.response.GeoObjectCollection.featureMember[0].GeoObject.description},
+                    Feel like C = {weatherData.current.temp_c},
+                    updated: {weatherData.current.last_updated}
+                </div> : 'No find'
             }
         </div>
     );

@@ -1,31 +1,24 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
-import { iso31661 } from 'iso-3166';
-
-export interface IWeatherDirectItem {
-    name: string,
-    local_names: { [key: string]: string },
-    lat: number,
-    lon: number,
-    country: string
-}
+import {SECRET_WEATHER_API_KEY} from "../../consts/secret-keys";
+import {Weather} from "./weather.interfaces";
+import IWeatherResponse = Weather.IWeatherResponse;
 
 export const weatherApi = createApi({
     reducerPath: 'weather/api',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://api.weatherapi.com/v1'
+        baseUrl: `http://api.weatherapi.com/v1/forecast.json`
     }),
     endpoints: (build) => ({
-        direct: build.query<
-            IWeatherDirectItem[],
+        weatherPoint: build.query<
+            IWeatherResponse,
             string
-
         >({
             query: (query) => ({
-                url: ``,
+                url: `?key=${SECRET_WEATHER_API_KEY}&q=${query}&lang=ru`,
                 method: 'get',
             }),
         })
     })
 });
 
-export const {useLazyDirectQuery} = weatherApi;
+export const {useLazyWeatherPointQuery} = weatherApi;
