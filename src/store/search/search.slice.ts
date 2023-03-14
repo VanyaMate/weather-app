@@ -9,12 +9,13 @@ export interface ISearchState {
 
 export interface ISearchSavedQueries {
     general: string,
+    pos: string,
     queriesList: ISearchSavedItem[]
 }
 
 export interface ISearchSavedItem {
     original: string,
-    match: string
+    pos: string
 }
 
 const storageName: string = `${STORAGE_PREFIX}savedQuery`;
@@ -29,21 +30,23 @@ export const searchSlice = createSlice({
     name: 'searchInput',
     initialState: initialState,
     reducers: {
-        saveSearchQuery: (state, action: PayloadAction<string>) => {
+        saveSearchQuery: (state, action: PayloadAction<ISearchSavedItem>) => {
             state.savedQueries.queriesList.push({
-                original: action.payload,
-                match: action.payload.toLowerCase()
+                original: action.payload.original,
+                pos: action.payload.pos
             });
             if (state.savedQueries.general === '') {
-                state.savedQueries.general = action.payload;
+                state.savedQueries.general = action.payload.original;
+                state.savedQueries.pos = action.payload.pos;
             }
             localStorage.setItem(storageName, JSON.stringify(state.savedQueries));
         },
         removeSearchSavedQuery: (state, action: PayloadAction<string>) => {
-            state.savedQueries.queriesList.filter((query) => query.match !== action.payload.toLowerCase());
-            if (state.savedQueries.general.toLowerCase() === action.payload.toLowerCase()) {
+            state.savedQueries.queriesList = state.savedQueries.queriesList.filter((query) => query.pos !== action.payload);
+            if (state.savedQueries.pos === action.payload) {
                 if (state.savedQueries.queriesList.length) {
                     state.savedQueries.general = state.savedQueries.queriesList[0].original;
+                    state.savedQueries.pos = state.savedQueries.queriesList[0].pos;
                 }
             }
             localStorage.setItem(storageName, JSON.stringify(state.savedQueries));

@@ -1,0 +1,8 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.container {
+    width: 100%;
+    top: calc(100% + #{$smallOffset});
+    left: 0;
+}

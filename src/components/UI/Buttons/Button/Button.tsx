@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {MouseEventHandler, ReactEventHandler, useMemo} from 'react';
 import {IDefaultComponent} from "../../../defaultComponent.interface";
 import css from './Button.module.scss';
 
@@ -6,7 +6,7 @@ export interface IButton extends IDefaultComponent {
     active?: boolean,
     always?: boolean,
     loading?: boolean,
-    onClick: () => void
+    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const Button = (props: IButton) => {

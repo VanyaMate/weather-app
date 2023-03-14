@@ -7,7 +7,7 @@ const Precipitation = () => {
 
     const rows = useMemo<IContainerWithTitleItem<number>[]>(() => {
         return [
-            { a: weather.current?.current.cloud, b: 'Облачность'},
+            { a: weather.current?.current.cloud, b: 'Облачность %'},
             { a: weather.current?.current.humidity, b: 'Влажность %'},
             { a: weather.current?.current.precip_mm, b: 'Осадки в ММ'},
             { a: weather.current?.current.precip_in, b: 'Осадки в ИНЧ'},

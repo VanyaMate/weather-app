@@ -5,6 +5,8 @@ import {IUseInputValue} from "../../../../hooks/useInputValue.hook";
 
 export interface IInput extends IDefaultComponent{
     type?: string,
+    onFocus?: () => void,
+    onBlur?: () => void
     placeholder?: string,
     hook: IUseInputValue<string>,
 }
@@ -25,6 +27,8 @@ const Input = React.memo((props: IInput) => {
             className={className}
             value={props.hook.current}
             placeholder={props.placeholder}
+            onFocus={props.onFocus}
+            onBlur={props.onBlur}
             onChange={(e) => props.hook.setCurrent(e.target.value)}
         />
     );

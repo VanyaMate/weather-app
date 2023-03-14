@@ -7,7 +7,7 @@ const AirQuality = () => {
 
     const rows = useMemo<IContainerWithTitleItem<number | string>[]>(() => {
         return [
-            { a: weather.current?.current.air_quality["gb-defra-index"].toFixed(0), b: 'Индекс загрязненности'},
+            { a: weather.current?.current.air_quality["gb-defra-index"].toFixed(0), b: 'Индекс загрязненности DEFRA'},
             { a: weather.current?.current.air_quality["us-epa-index"].toFixed(0), b: 'Индекс загрязненности EPA'},
             { a: weather.current?.current.air_quality.pm2_5.toFixed(0), b: 'Частицы PM 2.5'},
             { a: weather.current?.current.air_quality.pm10.toFixed(0), b: 'Частицы PM 10'},

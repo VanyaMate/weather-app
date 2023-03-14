@@ -1,0 +1,19 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.container {
+    position: absolute;
+    overflow: hidden;
+    transition: .1s;
+    border-radius: $mediumOffset;
+
+    background: $grayBlack;
+    height: 0;
+    padding: 0 $mediumOffset;
+
+    &.opened {
+        padding: $mediumOffset;
+        height: auto;
+        box-shadow: $defaultBoxShadow;
+    }
+}
