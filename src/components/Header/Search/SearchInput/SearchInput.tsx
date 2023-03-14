@@ -14,12 +14,14 @@ import css from './SearchInput.module.scss';
 export interface ISearchInput extends IDefaultComponent {}
 
 const SearchInput = (props: ISearchInput) => {
+    const search = useMySelector(state => state.search);
     const [dropdownOpened, setDropdownOpened] = useState<boolean>(false);
     const [inputFocus, setInputFocus] = useState<boolean>(false);
     const searchInput = useInputValue<string>('', (s: string) => s.length > 2);
     const debounce = useDebounce<string>(searchInput.current, 500);
-    const {setSearchQuery, setListYandexResponseItems} = useActions();
+    const {setCurrentPointWeather, setListYandexResponseItems} = useActions();
     const [dispatchGetPoint] = useLazyGetPointByNameQuery();
+    const [dispatchGetWeather] = useLazyWeatherPointQuery();
     const { className, ...other } = props;
 
     useEffect(() => {
@@ -30,8 +32,6 @@ const SearchInput = (props: ISearchInput) => {
     }, [searchInput.current])
 
     useEffect(() => {
-        setSearchQuery(debounce);
-
         if (debounce) {
             dispatchGetPoint(debounce)
                 .then(({ data }) => {
@@ -48,6 +48,11 @@ const SearchInput = (props: ISearchInput) => {
                 })
         }
     }, [debounce])
+
+    useEffect(() => {
+        const pos = convertYandexCoordsToWeatherCoords(search.currentQuery.pos);
+        dispatchGetWeather(pos).then(({ data }) => data && setCurrentPointWeather(data))
+    }, [search.currentQuery])
 
     return (
         <div className={[className, css.container].join(' ')} {...other}>

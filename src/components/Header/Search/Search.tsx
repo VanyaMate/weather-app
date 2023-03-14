@@ -9,7 +9,6 @@ const Search = () => {
         <div className={css.container}>
             <SearchInput className={css.input}/>
             <div className={css.buttons}>
-                <SearchAddToFavorites className={css.addButton}/>
                 <SearchFavoritesDropdown className={css.openButton}/>
             </div>
         </div>

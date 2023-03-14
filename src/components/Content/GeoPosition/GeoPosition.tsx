@@ -5,17 +5,17 @@ import css from './GeoPosition.module.scss';
 import {convertYandexCoordsToWeatherCoords} from "../../../utils/helpers";
 
 const GeoPosition = () => {
-    const yandex = useMySelector(state => state.yandex);
+    const search = useMySelector(state => state.search);
 
     return (
         <DefaultContainer className={css.container}>
             <div className={css.names}>
-                <div className={css.city}>{ yandex.current?.name || ' '}</div>
-                <div className={css.country}>{ yandex.current?.description || ' ' }</div>
+                <div className={css.city}>{ search.currentQuery.name || ' '}</div>
+                <div className={css.country}>{ search.currentQuery.desc || ' ' }</div>
             </div>
             <div className={css.geoPoint}>{
-                yandex.current
-                    ? convertYandexCoordsToWeatherCoords(yandex.current.Point.pos).replace(',', ' ')
+                search.currentQuery.pos
+                    ? convertYandexCoordsToWeatherCoords(search.currentQuery.pos.replace(',', ' '))
                     : ' '
             }</div>
         </DefaultContainer>

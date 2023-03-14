@@ -1,6 +1,6 @@
 @import "src/consts/sizes";
 
-$buttonsWidth: calc(#{$mediumHeight} * 2 + #{$smallOffset});
+$buttonsWidth: calc(#{$mediumHeight});
 $inputWidth: calc(100% - #{$buttonsWidth} - #{$smallOffset});
 
 .container {

@@ -1,27 +1,31 @@
 @import "src/consts/dark-theme-colors";
 @import "src/consts/sizes";
 
+$buttonsWidth: calc(#{$mediumHeight} * 2 + #{$smallOffset});
+$infoWidth: calc(100% - #{$buttonsWidth} - #{$smallOffset});
+
 .item {
     padding: $mediumOffset;
-    //background: $darkBlack;
     border-radius: $mediumOffset;
     color: $white;
     border: 2px dotted $lightBlack;
-    //box-shadow: $defaultBoxShadow;
     transition: .1s;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    &.active {
+        border: 2px dotted $markBlueLight
+    }
+
     &:hover {
-        box-shadow: none;
         box-shadow: $defaultBoxShadow;
         transform: scale(1.01);
     }
 
     .info {
-        width: 50%;
+        width: $infoWidth;
 
         .name {
             font-size: 16px;
@@ -34,13 +38,19 @@
     }
 
     .control {
-        width: 50%;
+        width: $buttonsWidth;
         display: flex;
         justify-content: end;
 
         .button {
             width: $mediumHeight;
             height: $mediumHeight;
+
+            margin-right: $smallOffset;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 }

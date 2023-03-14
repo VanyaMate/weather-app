@@ -1,0 +1,12 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.container {
+    position: relative;
+
+    .dropdown {
+        top: calc(100% + #{$smallOffset});
+        right: 0;
+        width: 400px;
+    }
+}
