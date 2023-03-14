@@ -21,7 +21,7 @@ const ContainerWithTitle = (props: IContainerWithTitle<string | number>) => {
         <DefaultContainer>
             <SmallTitle>{ props.title }</SmallTitle>
             <Vertical medium>
-                {props.rows.map((item) => <MarkRow key={item.b} before={item.b} after={item.a || '-'}/>)}
+                {props.rows.map((item) => <MarkRow key={item.b} before={item.b} after={item.a ?? '-'}/>)}
             </Vertical>
         </DefaultContainer>
     );
