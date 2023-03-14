@@ -12,7 +12,7 @@ export interface ISearchInput extends IDefaultComponent {}
 
 const SearchInput = (props: ISearchInput) => {
     const searchInput = useInputValue<string>('', (s: string) => s.length > 2);
-    const debounce = useDebounce<string>(searchInput.current, 400);
+    const debounce = useDebounce<string>(searchInput.current, 500);
     const {setSearchQuery, setCurrentYandexQuery, setCurrentPointWeather} = useActions();
     const [dispatchGetPoint] = useLazyGetPointByNameQuery();
     const [dispatchGetWeather] = useLazyWeatherPointQuery();

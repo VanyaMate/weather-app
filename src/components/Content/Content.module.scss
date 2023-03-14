@@ -13,7 +13,7 @@
             margin-top: $smallOffset;
 
             & > * {
-                width: calc(100% / 3);
+                width: calc((100% - #{$smallOffset} * 2) / 3);
 
                 margin-right: $smallOffset;
 

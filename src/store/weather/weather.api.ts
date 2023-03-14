@@ -13,7 +13,7 @@ export const weatherApi = createApi({
             string
         >({
             query: (query) => ({
-                url: `?key=${SECRET_WEATHER_API_KEY}&q=${query}&lang=ru`,
+                url: `?key=${SECRET_WEATHER_API_KEY}&q=${query}&lang=ru&aqi=yes`,
                 method: 'get',
             }),
         })

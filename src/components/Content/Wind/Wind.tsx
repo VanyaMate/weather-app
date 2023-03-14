@@ -18,7 +18,7 @@ const Wind = () => {
             { a: weather.current?.current.gust_kph, b: 'Порывы ветра КМ / Ч' },
             { a: weather.current?.current.gust_mph, b: 'Порывы ветра МИЛЬ / Ч' },
         ];
-    }, [weather])
+    }, [weather.current])
 
     return (
         <ContainerWithTitle title={'Ветер'} rows={rows}/>

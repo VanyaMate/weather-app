@@ -9,5 +9,29 @@
 body {
     font-size: 14px;
     background: $darkBlack;
-    font-family: 'Arial', 'Verdana';
+}
+
+$scrollWidth: 4;
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Arial', 'Verdana', "Trebuchet MS", "Courier New", "Trebuchet MS";
+
+    &::-webkit-scrollbar {
+        position: absolute;
+        width: #{$scrollWidth}px;
+        height: #{$scrollWidth}px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $darkBlack;
+        border-radius: calc(#{$scrollWidth}px / 2);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $markBlueLight;
+        border-radius: calc(#{$scrollWidth}px / 2);
+    }
 }

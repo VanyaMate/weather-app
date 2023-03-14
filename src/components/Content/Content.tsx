@@ -7,6 +7,7 @@ import BigTemperature from "./BigTemperature/BigTemperature";
 import Visibility from "./Visibility/Visibility";
 import Precipitation from "./Precipitation/Precipitation";
 import Pressure from "./Pressure/Pressure";
+import AirQuality from "./AirQuality/AirQuality";
 
 const Content = React.memo(() => {
     return (
@@ -17,6 +18,9 @@ const Content = React.memo(() => {
                     <BigTemperature/>
                     <Temperature/>
                     <Wind/>
+                </div>
+                <div className={css.threeInRow}>
+                    <AirQuality/>
                 </div>
                 <div className={css.threeInRow}>
                     <Visibility/>

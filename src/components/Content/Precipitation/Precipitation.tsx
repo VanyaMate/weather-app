@@ -12,7 +12,7 @@ const Precipitation = () => {
             { a: weather.current?.current.precip_mm, b: 'Осадки в ММ'},
             { a: weather.current?.current.precip_in, b: 'Осадки в ИНЧ'},
         ];
-    }, [weather])
+    }, [weather.current])
 
     return (
         <ContainerWithTitle title={'Осадки'} rows={rows}/>

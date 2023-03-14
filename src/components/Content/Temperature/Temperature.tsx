@@ -16,7 +16,7 @@ const Temperature = () => {
             { a: weather.current?.current.temp_f, b: '°F'},
             { a: weather.current?.current.feelslike_f, b: 'ощущается °F'},
         ];
-    }, [weather])
+    }, [weather.current])
 
     return (
         <ContainerWithTitle title={'Температура'} rows={rows}/>

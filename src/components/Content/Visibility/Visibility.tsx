@@ -9,8 +9,9 @@ const Visibility = () => {
         return [
             { a: weather.current?.current.vis_km, b: 'Видимость КМ'},
             { a: weather.current?.current.vis_miles, b: 'Видимость МИЛЬ'},
+            { a: weather.current?.current.uv, b: 'UV индекс'},
         ];
-    }, [weather])
+    }, [weather.current])
 
     return (
         <ContainerWithTitle title={'Видимость'} rows={rows}/>

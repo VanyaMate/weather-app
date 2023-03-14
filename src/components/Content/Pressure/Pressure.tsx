@@ -8,11 +8,11 @@ const Pressure = () => {
 
     const rows = useMemo<IContainerWithTitleItem<number | string>[]>(() => {
         return [
-            { a: ((weather.current?.current.pressure_mb || 0) * WEATHER_PRESSURE_MB_TO_MM).toFixed(0), b: 'Давление в ММ'},
+            { a: +((weather.current?.current.pressure_mb || 0) * WEATHER_PRESSURE_MB_TO_MM).toFixed(0), b: 'Давление в ММ'},
             { a: weather.current?.current.pressure_mb, b: 'Давление в МБ'},
             { a: weather.current?.current.pressure_in, b: 'Давление в ИНЧ'},
         ];
-    }, [weather])
+    }, [weather.current])
 
     return (
         <ContainerWithTitle title={'Давление'} rows={rows}/>
