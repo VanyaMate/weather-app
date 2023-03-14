@@ -11,6 +11,9 @@ const Precipitation = () => {
             { a: weather.current?.current.humidity, b: 'Влажность %'},
             { a: weather.current?.current.precip_mm, b: 'Осадки в ММ'},
             { a: weather.current?.current.precip_in, b: 'Осадки в ИНЧ'},
+            { a: weather.current?.current.vis_km, b: 'Видимость КМ'},
+            { a: weather.current?.current.vis_miles, b: 'Видимость МИЛЬ'},
+            { a: weather.current?.current.uv, b: 'UV индекс'},
         ];
     }, [weather.current])
 

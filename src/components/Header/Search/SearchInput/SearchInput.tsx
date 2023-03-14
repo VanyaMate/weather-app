@@ -14,13 +14,13 @@ import css from './SearchInput.module.scss';
 export interface ISearchInput extends IDefaultComponent {}
 
 const SearchInput = (props: ISearchInput) => {
-    const search = useMySelector(state => state.search);
+    const {search, yandex} = useMySelector(state => state);
     const [dropdownOpened, setDropdownOpened] = useState<boolean>(false);
     const [inputFocus, setInputFocus] = useState<boolean>(false);
     const searchInput = useInputValue<string>('', (s: string) => s.length > 2);
-    const debounce = useDebounce<string>(searchInput.current, 500);
-    const {setCurrentPointWeather, setListYandexResponseItems} = useActions();
-    const [dispatchGetPoint] = useLazyGetPointByNameQuery();
+    const debounce = useDebounce<string>(searchInput.current, 400);
+    const {setCurrentPointWeather, setListYandexResponseItems, setWeatherLoadingStatus} = useActions();
+    const [dispatchGetPoint, { isFetching: getPointFetching }] = useLazyGetPointByNameQuery();
     const [dispatchGetWeather] = useLazyWeatherPointQuery();
     const { className, ...other } = props;
 
@@ -50,21 +50,26 @@ const SearchInput = (props: ISearchInput) => {
     }, [debounce])
 
     useEffect(() => {
+        setWeatherLoadingStatus(true);
         const pos = convertYandexCoordsToWeatherCoords(search.currentQuery.pos);
-        dispatchGetWeather(pos).then(({ data }) => data && setCurrentPointWeather(data))
+        dispatchGetWeather(pos).then(({ data }) => {
+            if (data) setCurrentPointWeather(data);
+            setWeatherLoadingStatus(false);
+        })
     }, [search.currentQuery])
 
     return (
         <div className={[className, css.container].join(' ')} {...other}>
             <Input
                 hook={searchInput}
+                loading={getPointFetching}
                 placeholder={'Поиск'}
                 onFocus={() => setInputFocus(true)}
                 onBlur={() => setInputFocus(false)}
             />
             <SearchDropdown opened={dropdownOpened}/>
             <Button
-                active
+                active={!!searchInput.current && searchInput.valid && !!yandex.list.length}
                 always={(searchInput.current && searchInput.valid) || inputFocus}
                 className={css.button}
                 onClick={() => setDropdownOpened((p) => !p)}

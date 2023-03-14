@@ -1,0 +1,11 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+.container {
+    font-size: 20px;
+    color: $lightGray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $mediumOffset;
+}

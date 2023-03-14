@@ -7,6 +7,7 @@ import {useLazyWeatherPointQuery} from "../../../../../store/weather/weather.api
 import Vertical from "../../../../UI/Containers/Vertical/Vertical";
 import SearchDropdownItem from "./SearchDropdownItem/SearchDropdownItem";
 import {ISearchSavedItem} from "../../../../../store/search/search.slice";
+import CenterTitle from "../../../../UI/Titles/CenterTitle/CenterTitle";
 
 export interface ISearchDropdown extends IDefaultComponent {
     opened: boolean
@@ -25,9 +26,11 @@ const SearchDropdown = React.memo((props: ISearchDropdown) => {
 
     return (
         <DropdownContainer opened={props.opened} className={css.container}>
-            <Vertical>
-                { rows.map((item) => <SearchDropdownItem key={item.pos} data={item}/>) }
-            </Vertical>
+            {
+                rows.length ? <Vertical>
+                    { rows.map((item) => <SearchDropdownItem key={item.pos} data={item}/>) }
+                </Vertical> : <CenterTitle>Ничего не найдено</CenterTitle>
+            }
         </DropdownContainer>
     );
 });

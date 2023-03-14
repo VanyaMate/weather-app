@@ -19,11 +19,16 @@
         border: 1px solid $markBlueLight;
     }
 
-    .valid {
+    &.valid {
 
     }
 
-    .invalid {
+    &.invalid {
 
+    }
+
+    &.loading {
+        pointer-events: none;
+        animation: loading .5s infinite ease-in-out;
     }
 }

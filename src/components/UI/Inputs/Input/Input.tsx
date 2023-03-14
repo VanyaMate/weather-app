@@ -8,6 +8,7 @@ export interface IInput extends IDefaultComponent{
     onFocus?: () => void,
     onBlur?: () => void
     placeholder?: string,
+    loading?: boolean,
     hook: IUseInputValue<string>,
 }
 
@@ -16,9 +17,10 @@ const Input = React.memo((props: IInput) => {
         return [
             css.input,
             props.className,
-            props.hook.valid ? css.valid : css.invalid
+            props.hook.valid ? css.valid : css.invalid,
+            props.loading ? css.loading : ''
         ].filter(c => !!c).join(' ')
-    }, [props.className, props.hook.valid])
+    }, [props.className, props.hook.valid, props.loading])
 
     return (
         <input

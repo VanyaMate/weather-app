@@ -8,13 +8,17 @@
     .content {
         width: $contentWidth;
 
+        &.loading {
+            pointer-events: none;
+            animation: loading .5s infinite ease-in-out;
+        }
+
         .threeInRow {
             display: flex;
             margin-top: $smallOffset;
 
             & > * {
                 width: calc((100% - #{$smallOffset} * 2) / 3);
-
                 margin-right: $smallOffset;
 
                 &:last-child {
