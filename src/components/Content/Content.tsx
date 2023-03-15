@@ -17,13 +17,14 @@ const Content = React.memo(() => {
         <div className={css.container}>
             <div className={[css.content, weather.loading ? css.loading : ''].join(' ')}>
                 <GeoPosition/>
-                <HoursSlider hours={weather.current?.forecast.forecastday[0].hour || []}/>
+                <div className={css._1_1_1}>
+                    <BigTemperature/>
+                    <Temperature/>
+                    <Pressure/>
+                </div>
+                <HoursSlider/>
                 <div className={css._2_1}>
                     <div className={css._2_1__2}>
-                        <div className={css._1_1}>
-                            <BigTemperature/>
-                            <Temperature/>
-                        </div>
                         <div className={css._1_1}>
                             <Precipitation/>
                             <Wind/>
