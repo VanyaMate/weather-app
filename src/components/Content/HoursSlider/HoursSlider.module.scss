@@ -4,14 +4,36 @@
 .container {
     display: flex;
     overflow-x: scroll;
-    height: 50px;
+    height: 55px;
     position: relative;
 
+    .mark {
+        position: absolute;
+        left: 140%;
+        width: 40px;
+        height: 100%;
+        background: $markBlueLight;
+        border-radius: $mediumOffset $mediumOffset 0 0;
+        z-index: 1;
+        transform: translateX(-50%);
+    }
+
     .item {
+        margin-top: $smallOffset;
+        min-width: 70px;
+        max-width: 70px;
         margin-right: $smallOffset;
+        position: relative;
+        z-index: 2;
 
         &:last-child {
             margin-right: 0;
+        }
+
+        &.current {
+            background: $markOrangeLight;
+            color: $grayBlack;
+            border: 1px solid $markOrangeLight;
         }
     }
 }
