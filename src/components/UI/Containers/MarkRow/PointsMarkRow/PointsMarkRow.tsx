@@ -35,8 +35,15 @@ const PointsMarkRow = (props: IMarkRow) => {
 
         const color = colorPoint ? colorPoint.color : MarkColors.DANGER;
 
-        if (!colorPoint && (distance < props.value!)) {
-            setDistance(+props.value!);
+
+        // Если значение больше чем последней поинт, то дистанция становится значением
+        if (!colorPoint && props.points![props.points!.length - 1].finish < props.value!) {
+            setDistance(+props.value!)
+        } else
+        // Если значение если текущая дистанция не равна установленной дистанции - она устанавливается по дефолту
+        // Для возвращения дефолтного максимального значения
+        if (colorPoint && distance !== props.distance) {
+            setDistance(props.distance!)
         }
 
         return { left: left + '%', color };
