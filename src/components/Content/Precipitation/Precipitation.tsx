@@ -1,21 +1,22 @@
 import React, {useMemo} from 'react';
 import {useMySelector} from "../../../hooks/redux.hooks";
-import ContainerWithTitle, {IContainerWithTitleItem} from "../../UI/Containers/ContainerWithTitle/ContainerWithTitle";
+import ContainerWithTitle from "../../UI/Containers/ContainerWithTitle/ContainerWithTitle";
+import {IMarkRow} from "../../UI/Containers/MarkRow/MarkRow";
 
 const Precipitation = () => {
     const weather = useMySelector((state) => state.weather);
 
-    const rows = useMemo<IContainerWithTitleItem<number>[]>(() => {
+    const rows = useMemo<IMarkRow[]>(() => {
         return [
-            { a: weather.current?.current.cloud, b: 'Облачность %'},
-            { a: weather.current?.current.humidity, b: 'Влажность %'},
-            { a: weather.current?.current.precip_mm, b: 'Осадки в ММ'},
-            { a: weather.current?.current.precip_in, b: 'Осадки в ИНЧ'},
-            { a: weather.current?.current.vis_km, b: 'Видимость КМ'},
-            { a: weather.current?.current.vis_miles, b: 'Видимость МИЛЬ'},
-            { a: weather.current?.current.uv, b: 'UV индекс'},
+            { value: weather.currentData?.cloud, title: 'Облачность %'},
+            { value: weather.currentData?.humidity, title: 'Влажность %'},
+            { value: weather.currentData?.precip_mm, title: 'Осадки в ММ'},
+            { value: weather.currentData?.precip_in, title: 'Осадки в ИНЧ'},
+            { value: weather.currentData?.vis_km, title: 'Видимость КМ'},
+            { value: weather.currentData?.vis_miles, title: 'Видимость МИЛЬ'},
+            { value: weather.currentData?.uv, title: 'UV индекс'},
         ];
-    }, [weather.current])
+    }, [weather.currentData])
 
     return (
         <ContainerWithTitle title={'Осадки'} rows={rows}/>

@@ -1,0 +1,85 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .title {
+            font-size: 12px;
+            color: $lightGray;
+        }
+
+        .value {
+            font-size: 16px;
+            color: $white;
+            font-weight: bold;
+        }
+    }
+
+    .points {
+        display: flex;
+        position: relative;
+        padding-top: 15px;
+        width: 100%;
+
+        & > * {
+            &.good {
+                background: $markBlueLight;
+            }
+
+            &.warning {
+                background: $markYellowLight;
+                color: $grayBlack;
+            }
+
+            &.danger {
+                background: $markRedLight;
+                color: $white;
+            }
+        }
+
+        .value {
+            font-size: 12px;
+            position: absolute;
+            top: $smallOffset;
+            padding: 2px $smallOffset;
+            transform: translateX(-50%);
+            border-radius: $smallOffset;
+
+            &:after {
+                content: '';
+                background: inherit;
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        .point {
+            height: 2px;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                right: -1px;
+                bottom: 0;
+                height: $smallOffset;
+                width: 2px;
+                background: $markBlueLight;
+            }
+
+            &:last-child {
+                &:after {
+                    background: transparent;
+                }
+            }
+        }
+    }
+}

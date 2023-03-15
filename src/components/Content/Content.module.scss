@@ -1,25 +1,70 @@
 @import "src/consts/sizes";
+@import "src/consts/dark-theme-colors";
 
 .container {
     display: flex;
     justify-content: center;
-    margin-top: $mediumOffset;
+    margin-top: $smallOffset;
 
     .content {
         width: $contentWidth;
 
         &.loading {
-            pointer-events: none;
             animation: loading .5s infinite ease-in-out;
         }
 
-        .threeInRow {
-            display: flex;
+        & > * {
             margin-top: $smallOffset;
+        }
+
+        ._1_1_1 {
+            display: flex;
 
             & > * {
                 width: calc((100% - #{$smallOffset} * 2) / 3);
                 margin-right: $smallOffset;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        ._2_1 {
+            display: flex;
+
+            ._2_1__2 {
+                width: calc(100% / 3 * 2 - #{$smallOffset} / 2);
+                margin-right: $smallOffset;
+
+                & > * {
+                    margin-top: $smallOffset;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+
+            ._2_1__1 {
+                width: calc(100% / 3 * 1 - #{$smallOffset} / 2);
+
+                & > * {
+                    margin-top: $smallOffset;
+
+                    &:first-child {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        ._1_1 {
+            display: flex;
+
+            & > * {
+                margin-right: $smallOffset;
+                width: calc(100% *.5 - #{$smallOffset} / 2);
 
                 &:last-child {
                     margin-right: 0;

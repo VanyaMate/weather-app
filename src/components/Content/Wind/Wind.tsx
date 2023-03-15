@@ -1,24 +1,21 @@
 import React, {useMemo} from 'react';
-import DefaultContainer from "../../UI/Containers/DefaultContainer/DefaultContainer";
-import MarkRow from "../../UI/Containers/MarkRow/MarkRow";
+import {IMarkRow} from "../../UI/Containers/MarkRow/MarkRow";
 import {useMySelector} from "../../../hooks/redux.hooks";
-import Vertical from '../../UI/Containers/Vertical/Vertical';
-import SmallTitle from "../../UI/Titles/SmallTitle/SmallTitle";
-import ContainerWithTitle, {IContainerWithTitleItem} from "../../UI/Containers/ContainerWithTitle/ContainerWithTitle";
+import ContainerWithTitle from "../../UI/Containers/ContainerWithTitle/ContainerWithTitle";
 
 const Wind = () => {
     const weather = useMySelector((state) => state.weather);
 
-    const rows = useMemo<IContainerWithTitleItem<number | string>[]>(() => {
+    const rows = useMemo<IMarkRow[]>(() => {
         return [
-            { a: weather.current?.current.wind_mph, b: 'М / С' },
-            { a: weather.current?.current.wind_kph, b: 'КМ / Ч' },
-            { a: weather.current?.current.wind_degree, b: 'Градус' },
-            { a: weather.current?.current.wind_dir, b: 'Направление' },
-            { a: weather.current?.current.gust_kph, b: 'Порывы ветра КМ / Ч' },
-            { a: weather.current?.current.gust_mph, b: 'Порывы ветра МИЛЬ / Ч' },
+            { value: weather.currentData?.wind_mph, title: 'М / С' },
+            { value: weather.currentData?.wind_kph, title: 'КМ / Ч' },
+            { value: weather.currentData?.wind_degree, title: 'Градус' },
+            { value: weather.currentData?.wind_dir, title: 'Направление' },
+            { value: weather.currentData?.gust_kph, title: 'Порывы ветра КМ / Ч' },
+            { value: weather.currentData?.gust_mph, title: 'Порывы ветра МИЛЬ / Ч' },
         ];
-    }, [weather.current])
+    }, [weather.currentData])
 
     return (
         <ContainerWithTitle title={'Ветер'} rows={rows}/>

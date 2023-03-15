@@ -9,12 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/material": "^5.11.13",
+    "@mui/styled-engine-sc": "^5.11.11",
     "@reduxjs/toolkit": "^1.9.3",
     "iso-3166": "^4.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "sass": "^1.59.2"
+    "react-resize-detector": "^8.0.4",
+    "sass": "^1.59.2",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

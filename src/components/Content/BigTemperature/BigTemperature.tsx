@@ -9,16 +9,16 @@ const BigTemperature = () => {
     return (
         <DefaultContainer className={css.container}>
             <div className={css.icon}>
-                <img src={weather.current?.current.condition.icon}/>
+                <img src={weather.currentData?.condition.icon}/>
             </div>
             <div className={css.desc}>
-                {weather.current?.current.condition.text}
+                {weather.currentData?.condition.text}
             </div>
             <div className={css.temperature}>
-                {weather.current?.current.temp_c} °C
+                {weather.currentData?.temp_c} °C
             </div>
             <div className={css.feels}>
-                ощущается как <span>{weather.current?.current.feelslike_c} °C</span>
+                ощущается как <span>{weather.currentData?.feelslike_c} °C</span>
             </div>
         </DefaultContainer>
     );

@@ -4,12 +4,14 @@ import * as Weather from "./weather.interfaces";
 
 export interface IWeatherState {
     loading: boolean,
-    current: Weather.IWeatherResponse | null
+    current: Weather.IWeatherResponse | null,
+    currentData: Weather.Weather | Weather.HourWeather | null
 }
 
 const initialState: IWeatherState = {
     loading: false,
-    current: null
+    current: null,
+    currentData: null,
 }
 
 export const weatherSlice = createSlice({
@@ -21,6 +23,9 @@ export const weatherSlice = createSlice({
         },
         setCurrentPointWeather: (state, action: PayloadAction<Weather.IWeatherResponse>) => {
             state.current = action.payload;
+        },
+        setCurrentWeatherData: (state, action: PayloadAction<Weather.Weather | Weather.HourWeather>) => {
+            state.currentData = action.payload;
         }
     }
 });

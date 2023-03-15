@@ -19,7 +19,7 @@ const SearchInput = (props: ISearchInput) => {
     const [inputFocus, setInputFocus] = useState<boolean>(false);
     const searchInput = useInputValue<string>('', (s: string) => s.length > 2);
     const debounce = useDebounce<string>(searchInput.current, 400);
-    const {setCurrentPointWeather, setListYandexResponseItems, setWeatherLoadingStatus} = useActions();
+    const {setCurrentPointWeather, setListYandexResponseItems, setWeatherLoadingStatus, setCurrentWeatherData} = useActions();
     const [dispatchGetPoint, { isFetching: getPointFetching }] = useLazyGetPointByNameQuery();
     const [dispatchGetWeather] = useLazyWeatherPointQuery();
     const { className, ...other } = props;
@@ -53,7 +53,10 @@ const SearchInput = (props: ISearchInput) => {
         setWeatherLoadingStatus(true);
         const pos = convertYandexCoordsToWeatherCoords(search.currentQuery.pos);
         dispatchGetWeather(pos).then(({ data }) => {
-            if (data) setCurrentPointWeather(data);
+            if (data) {
+                setCurrentPointWeather(data);
+                setCurrentWeatherData(data.current)
+            }
             setWeatherLoadingStatus(false);
         })
     }, [search.currentQuery])

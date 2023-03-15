@@ -1,22 +1,22 @@
 import React, {useMemo} from 'react';
 import {useMySelector} from "../../../hooks/redux.hooks";
 import DefaultContainer from "../../UI/Containers/DefaultContainer/DefaultContainer";
-import MarkRow from "../../UI/Containers/MarkRow/MarkRow";
+import MarkRow, {IMarkRow} from "../../UI/Containers/MarkRow/MarkRow";
 import Vertical from "../../UI/Containers/Vertical/Vertical";
 import SmallTitle from "../../UI/Titles/SmallTitle/SmallTitle";
-import ContainerWithTitle, {IContainerWithTitleItem} from "../../UI/Containers/ContainerWithTitle/ContainerWithTitle";
+import ContainerWithTitle from "../../UI/Containers/ContainerWithTitle/ContainerWithTitle";
 
 const Temperature = () => {
     const weather = useMySelector((state) => state.weather);
 
-    const rows = useMemo<IContainerWithTitleItem<number>[]>(() => {
+    const rows = useMemo<IMarkRow[]>(() => {
         return [
-            { a: weather.current?.current.temp_c, b: '°C'},
-            { a: weather.current?.current.feelslike_c, b: 'ощущается °C'},
-            { a: weather.current?.current.temp_f, b: '°F'},
-            { a: weather.current?.current.feelslike_f, b: 'ощущается °F'},
+            { value: weather.currentData?.temp_c, title: '°C'},
+            { value: weather.currentData?.feelslike_c, title: 'ощущается °C'},
+            { value: weather.currentData?.temp_f, title: '°F'},
+            { value: weather.currentData?.feelslike_f, title: 'ощущается °F'},
         ];
-    }, [weather.current])
+    }, [weather.currentData])
 
     return (
         <ContainerWithTitle title={'Температура'} rows={rows}/>

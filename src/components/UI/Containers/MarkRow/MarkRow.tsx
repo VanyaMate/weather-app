@@ -1,18 +1,29 @@
 import React from 'react';
 import {IDefaultComponent} from "../../../defaultComponent.interface";
-import css from './MarkRow.module.scss';
+import DefaultMarkRow from "./DefaultMarkRow/DefaultMarkRow";
+import PointsMarkRow from "./PointsMarkRow/PointsMarkRow";
+import {MarkColors} from "./PointsMarkRow/MarkColors";
+
+export interface IMarkRowPoint {
+    start: number,
+    finish: number,
+    color: MarkColors,
+    text?: string
+}
 
 export interface IMarkRow extends IDefaultComponent {
-    before: string,
-    after: string | number,
+    title: string,
+    value: string | number | undefined,
+    points?: IMarkRowPoint[],
+    distance?: number,
+    start?: number,
 }
 
 const MarkRow = (props: IMarkRow) => {
     return (
-        <div className={css.container}>
-            <div className={css.before}>{ props.before }</div>
-            <div className={css.after}>{ props.after }</div>
-        </div>
+        props.points && props.value
+            ? <PointsMarkRow {...props}/>
+            : <DefaultMarkRow {...props}/>
     );
 };
 
