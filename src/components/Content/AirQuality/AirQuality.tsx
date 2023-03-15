@@ -38,10 +38,9 @@ const AirQuality = () => {
                     {start: 0, finish: 12, color: MarkColors.GOOD},
                     {start: 12, finish: 35, color: MarkColors.WARNING},
                     {start: 35, finish: 55, color: MarkColors.DANGER},
-                    {start: 55, finish: 150, color: MarkColors.DANGER},
                 ],
                 start: 0,
-                distance: 150
+                distance: 55
             },
             {
                 value: weather.currentData?.air_quality.pm10.toFixed(0),
@@ -49,10 +48,10 @@ const AirQuality = () => {
                 points: [
                     {start: 0, finish: 54, color: MarkColors.GOOD},
                     {start: 54, finish: 154, color: MarkColors.WARNING},
-                    {start: 154, finish: 300, color: MarkColors.DANGER},
+                    {start: 154, finish: 230, color: MarkColors.DANGER},
                 ],
                 start: 0,
-                distance: 300
+                distance: 230
             },
             {
                 value: weather.currentData?.air_quality.o3.toFixed(0),
@@ -71,10 +70,10 @@ const AirQuality = () => {
                 points: [
                     {start: 0, finish: 70, color: MarkColors.GOOD},
                     {start: 70, finish: 150, color: MarkColors.WARNING},
-                    {start: 150, finish: 280, color: MarkColors.DANGER},
+                    {start: 150, finish: 230, color: MarkColors.DANGER},
                 ],
                 start: 0,
-                distance: 280
+                distance: 230
             },
             {
                 value: weather.currentData?.air_quality.so2.toFixed(0),
@@ -82,10 +81,10 @@ const AirQuality = () => {
                 points: [
                     {start: 0, finish: 70, color: MarkColors.GOOD},
                     {start: 70, finish: 150, color: MarkColors.WARNING},
-                    {start: 150, finish: 380, color: MarkColors.DANGER},
+                    {start: 150, finish: 260, color: MarkColors.DANGER},
                 ],
                 start: 0,
-                distance: 380
+                distance: 260
             },
             {
                 value: weather.currentData?.air_quality.co.toFixed(0),

@@ -1,31 +1,43 @@
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {IMarkRow} from "../MarkRow";
 import css from './PointsMarkRow.module.scss';
 import {MarkColors} from "./MarkColors";
 
 const PointsMarkRow = (props: IMarkRow) => {
-    const points = useMemo(() => {
-        const oneIs: number = 100 / (props.distance! - props.start!);
+    const [distance, setDistance] = useState<number>(props.distance ?? 0);
 
-        return props.points!.map((point) => {
+    const points = useMemo(() => {
+        const oneIs: number = 100 / (distance - props.start!);
+
+        return props.points!.map((point, index) => {
+            // Если идет перебор - он добавляется к последнему блоку (Danger)
+            const endBonus = index === (props.points?.length! - 1) ? distance - props.distance! : 0;
+            const width = oneIs * (point.finish - point.start + endBonus);
+
             return {
-                width: oneIs * (point.finish - point.start) + '%',
+                width: width + '%',
                 color: point.color,
                 text: point.text
             }
         })
-    }, [props.points, props.distance, props.start]);
+    }, [props.points, props.distance, props.start, distance]);
 
     const valueStatus = useMemo<{ left: string, color: MarkColors }>(() => {
         const value = +props.value!;
-        const sectionWidth = 100 / (props.distance! - props.start!);
+        const sectionWidth = 100 / (distance - props.start!);
         const left = sectionWidth * (value - props.start!);
 
-        const color = props.points!.filter((point) => {
+        const colorPoint = props.points!.filter((point) => {
             if (value >= point.start && value <= point.finish) {
                 return true;
             }
-        })[0].color;
+        })[0];
+
+        const color = colorPoint ? colorPoint.color : MarkColors.DANGER;
+
+        if (!colorPoint && (distance < props.value!)) {
+            setDistance(+props.value!);
+        }
 
         return { left: left + '%', color };
     }, [points])

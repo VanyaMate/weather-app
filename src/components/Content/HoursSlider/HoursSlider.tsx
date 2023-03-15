@@ -15,7 +15,7 @@ const HoursSlider = React.memo(() => {
 
         if (localTime) {
             const [hours, minutes] = localTime;
-            return 75 * (+hours + (100 / 60 * +minutes) / 100) + 35;
+            return 75 * (+hours + (100 / 60 * +minutes) / 100) - 2.5 - (+hours === 23 ? 5 : 0);
         } else {
             return 0;
         }
