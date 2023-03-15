@@ -4,14 +4,12 @@ import css from './HoursSlider.module.scss';
 import {IDefaultComponent} from "../../defaultComponent.interface";
 import * as Weather from "../../../store/weather/weather.interfaces";
 import Button from "../../UI/Buttons/Button/Button";
-import {useActions} from "../../../hooks/redux.hooks";
+import {useActions, useMySelector} from "../../../hooks/redux.hooks";
 import CenterTitle from "../../UI/Titles/CenterTitle/CenterTitle";
 
-export interface IHoursSlider extends IDefaultComponent {
-    hours: Weather.HourWeather[]
-}
 
-const HoursSlider = React.memo((props: IHoursSlider) => {
+const HoursSlider = React.memo(() => {
+    const weather = useMySelector((state) => state.weather);
     const {setCurrentWeatherData} = useActions();
     const [selectedTime, setSelectedTime] = useState<string>();
 
@@ -20,10 +18,11 @@ const HoursSlider = React.memo((props: IHoursSlider) => {
             <CenterTitle>WIP: Очень примерный прогноз на день</CenterTitle>
             <div className={css.container}>
                 {
-                    props.hours.map((hourWeather) => {
+                    weather.current?.forecast.forecastday[0].hour.map((hourWeather) => {
                         return <Button
                             key={hourWeather.time}
                             active
+                            className={css.item}
                             always={selectedTime === hourWeather.time}
                             onClick={() => {
                                 setSelectedTime(hourWeather.time);

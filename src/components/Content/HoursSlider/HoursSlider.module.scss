@@ -1,7 +1,17 @@
+@import "src/consts/dark-theme-colors";
+@import "src/consts/sizes";
+
 .container {
     display: flex;
+    overflow-x: scroll;
+    height: 50px;
+    position: relative;
 
     .item {
+        margin-right: $smallOffset;
 
+        &:last-child {
+            margin-right: 0;
+        }
     }
 }

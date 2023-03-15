@@ -5,7 +5,7 @@ import * as Weather from "./weather.interfaces";
 export interface IWeatherState {
     loading: boolean,
     current: Weather.IWeatherResponse | null,
-    currentData: Weather.Weather | Weather.HourWeather | null
+    currentData: Weather.Weather | Weather.HourWeather | null,
 }
 
 const initialState: IWeatherState = {
