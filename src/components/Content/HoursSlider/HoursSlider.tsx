@@ -17,7 +17,7 @@ const HoursSlider = React.memo((props: IHoursSlider) => {
 
     return (
         <DefaultContainer>
-            <CenterTitle>Очень примерный прогноз на день</CenterTitle>
+            <CenterTitle>WIP: Очень примерный прогноз на день</CenterTitle>
             <div className={css.container}>
                 {
                     props.hours.map((hourWeather) => {
