@@ -8,7 +8,7 @@ export default defineConfig({
         VitePWA({
             injectRegister: 'auto',
             manifest: {
-                "name": "VanyaMate Weather",
+                "name": "VM Weather",
                 "short_name": "VM Weather",
                 "theme_color": "#7777ff",
                 "background_color": "#111625",

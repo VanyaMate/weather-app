@@ -9,6 +9,8 @@ Url: https://vm-weather.web.app
 - **React**
 - **Redux Toolkit / Redux Toolkit Query**
 - **SCSS**
+- **PWA**
+- **Service Workers**
 
 ***
 **weatherapi.com api** - для получения погоды<br/>
