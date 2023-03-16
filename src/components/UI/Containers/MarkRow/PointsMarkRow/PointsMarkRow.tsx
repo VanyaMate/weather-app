@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useRef, useState} from 'react';
 import {IMarkRow} from "../MarkRow";
 import css from './PointsMarkRow.module.scss';
 import {MarkColors} from "./MarkColors";

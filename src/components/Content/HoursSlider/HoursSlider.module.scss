@@ -12,7 +12,7 @@
         left: 140%;
         width: 40px;
         height: 100%;
-        background: $markBlueLight;
+        background: $markOrangeLight;
         border-radius: $mediumOffset $mediumOffset 0 0;
         z-index: 1;
         transform: translateX(-50%);
@@ -31,9 +31,12 @@
         }
 
         &.current {
-            background: $markOrangeLight;
-            color: $grayBlack;
-            border: 1px solid $markOrangeLight;
+
+            &.active {
+                background: $markBlueLight;
+                color: $white;
+                border: 1px solid $markBlueLight;
+            }
         }
     }
 }
