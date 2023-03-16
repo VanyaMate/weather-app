@@ -7,4 +7,8 @@
     color: $white;
     border-radius: $mediumOffset;
     box-shadow: $defaultBoxShadow;
+
+    @media screen and (max-width: $contentWidth_800max) {
+        padding: $mediumOffset;
+    }
 }

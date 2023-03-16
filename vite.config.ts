@@ -7,10 +7,15 @@ export default defineConfig({
         react(),
         VitePWA({
             injectRegister: 'auto',
+            registerType: 'autoUpdate',
+            workbox: {
+                cleanupOutdatedCaches: true,
+                cacheId: 'v1.0.0'
+            },
             manifest: {
                 "name": "VM Weather",
                 "short_name": "VM Weather",
-                "theme_color": "#7777ff",
+                "theme_color": "#1d2131",
                 "background_color": "#111625",
                 "display": "standalone",
                 "orientation": "portrait",
