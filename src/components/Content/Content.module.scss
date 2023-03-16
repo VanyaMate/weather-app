@@ -33,12 +33,22 @@
         ._2_1 {
             display: flex;
 
+            & > * {
+                margin-left: $smallOffset;
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+
             ._2_1__2 {
                 width: calc(100% / 3 * 2 - #{$smallOffset} / 2);
-                margin-right: $smallOffset;
+                min-height: 100%;
+                display: flex;
+                flex-direction: column;
 
                 & > * {
                     margin-top: $smallOffset;
+                    height: 100%;
 
                     &:first-child {
                         margin-top: 0;
