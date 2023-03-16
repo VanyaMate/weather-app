@@ -50,15 +50,17 @@ const SearchInput = (props: ISearchInput) => {
     }, [debounce])
 
     useEffect(() => {
-        setWeatherLoadingStatus(true);
-        const pos = convertYandexCoordsToWeatherCoords(search.currentQuery.pos);
-        dispatchGetWeather(pos).then(({ data }) => {
-            if (data) {
-                setCurrentPointWeather(data);
-                setCurrentWeatherData(data.current)
-            }
-            setWeatherLoadingStatus(false);
-        })
+        if (search.currentQuery.pos) {
+            setWeatherLoadingStatus(true);
+            const pos = convertYandexCoordsToWeatherCoords(search.currentQuery.pos);
+            dispatchGetWeather(pos).then(({data}) => {
+                if (data) {
+                    setCurrentPointWeather(data);
+                    setCurrentWeatherData(data.current)
+                }
+                setWeatherLoadingStatus(false);
+            })
+        }
     }, [search.currentQuery])
 
     return (
