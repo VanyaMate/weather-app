@@ -99,6 +99,7 @@
 
             ._2_1__1 {
                 width: calc(100% / 3 * 1 - #{$smallOffset} / 2);
+                min-height: 100%;
 
                 @media screen and (max-width: $contentWidth_800max) {
                     width: 100%;
@@ -106,6 +107,7 @@
 
                 & > * {
                     margin-top: $smallOffset;
+                    height: 100%;
 
                     &:first-child {
                         margin-top: 0;

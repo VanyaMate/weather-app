@@ -3,6 +3,7 @@ import css from './Content.module.scss';
 import GeoPosition from "./GeoPosition/GeoPosition";
 import {useMySelector} from "../../hooks/redux.hooks";
 import HoursSlider from "./HoursSlider/HoursSlider";
+import CurrentWeather from "./CurrentWeather/CurrentWeather";
 import DayWeather from "./DayWeather/DayWeather";
 
 const Content = React.memo(() => {
@@ -12,8 +13,7 @@ const Content = React.memo(() => {
         <div className={css.container}>
             <div className={[css.content, weather.loading ? css.loading : ''].join(' ')}>
                 <GeoPosition/>
-                <DayWeather/>
-                <HoursSlider/>
+                <CurrentWeather/>
                 <DayWeather/>
             </div>
         </div>
