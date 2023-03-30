@@ -6,11 +6,14 @@ import ContainerWithTitle from "../../UI/Containers/ContainerWithTitle/Container
 
 const DayAirQuality = () => {
     const weather = useMySelector((state) => state.weather);
+    const dayAirQuality = useMemo(() => {
+        return weather.current?.forecast.forecastday[0]?.day?.air_quality;
+    }, [weather.current?.forecast.forecastday[0]])
 
     const rows = useMemo<IMarkRow[]>(() => {
         return [
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality["gb-defra-index"].toFixed(0),
+                value: dayAirQuality && dayAirQuality["gb-defra-index"]?.toFixed(0),
                 title: 'Индекс загрязненности DEFRA',
                 points: [
                     {start: 1, finish: 4, color: MarkColors.GOOD},
@@ -21,7 +24,7 @@ const DayAirQuality = () => {
                 distance: 10
             },
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality["us-epa-index"].toFixed(0),
+                value: dayAirQuality && dayAirQuality["us-epa-index"].toFixed(0),
                 title: 'Индекс загрязненности EPA',
                 points: [
                     {start: 1, finish: 2, color: MarkColors.GOOD},
@@ -32,7 +35,7 @@ const DayAirQuality = () => {
                 distance: 6
             },
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality.pm2_5.toFixed(0),
+                value: dayAirQuality && dayAirQuality.pm2_5.toFixed(0),
                 title: 'Частицы PM 2.5',
                 points: [
                     {start: 0, finish: 12, color: MarkColors.GOOD},
@@ -43,7 +46,7 @@ const DayAirQuality = () => {
                 distance: 55
             },
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality.pm10.toFixed(0),
+                value: dayAirQuality && dayAirQuality.pm10.toFixed(0),
                 title: 'Частицы PM 10',
                 points: [
                     {start: 0, finish: 54, color: MarkColors.GOOD},
@@ -54,7 +57,7 @@ const DayAirQuality = () => {
                 distance: 230
             },
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality.o3.toFixed(0),
+                value: dayAirQuality && dayAirQuality.o3.toFixed(0),
                 title: 'Озон О3',
                 points: [
                     {start: 0, finish: 80, color: MarkColors.GOOD},
@@ -65,7 +68,7 @@ const DayAirQuality = () => {
                 distance: 240
             },
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality.no2.toFixed(0),
+                value: dayAirQuality && dayAirQuality.no2.toFixed(0),
                 title: 'Диоксид азота NO2',
                 points: [
                     {start: 0, finish: 70, color: MarkColors.GOOD},
@@ -76,7 +79,7 @@ const DayAirQuality = () => {
                 distance: 230
             },
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality.so2.toFixed(0),
+                value: dayAirQuality && dayAirQuality.so2.toFixed(0),
                 title: 'Диоксид серы SO2',
                 points: [
                     {start: 0, finish: 70, color: MarkColors.GOOD},
@@ -87,7 +90,7 @@ const DayAirQuality = () => {
                 distance: 260
             },
             {
-                value: weather.current?.forecast.forecastday[0]?.day.air_quality.co.toFixed(0),
+                value: dayAirQuality && dayAirQuality.co.toFixed(0),
                 title: 'Монооксид углерода CO',
                 points: [
                     {start: 0, finish: 440, color: MarkColors.GOOD},
