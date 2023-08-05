@@ -11,7 +11,7 @@ const AirQuality = () => {
     const rows = useMemo<IMarkRow[]>(() => {
         return [
             {
-                value: airQuality && airQuality["gb-defra-index"].toFixed(0),
+                value: airQuality && airQuality["gb-defra-index"]?.toFixed(0),
                 title: 'Индекс загрязненности DEFRA',
                 points: [
                     {start: 1, finish: 4, color: MarkColors.GOOD},
@@ -22,7 +22,7 @@ const AirQuality = () => {
                 distance: 10
             },
             {
-                value: airQuality && airQuality["us-epa-index"].toFixed(0),
+                value: airQuality && airQuality["us-epa-index"]?.toFixed(0),
                 title: 'Индекс загрязненности EPA',
                 points: [
                     {start: 1, finish: 2, color: MarkColors.GOOD},
@@ -33,7 +33,7 @@ const AirQuality = () => {
                 distance: 6
             },
             {
-                value: airQuality && airQuality.pm2_5.toFixed(0),
+                value: airQuality && airQuality.pm2_5?.toFixed(0),
                 title: 'Частицы PM 2.5',
                 points: [
                     {start: 0, finish: 12, color: MarkColors.GOOD},
@@ -44,7 +44,7 @@ const AirQuality = () => {
                 distance: 55
             },
             {
-                value: airQuality && airQuality.pm10.toFixed(0),
+                value: airQuality && airQuality.pm10?.toFixed(0),
                 title: 'Частицы PM 10',
                 points: [
                     {start: 0, finish: 54, color: MarkColors.GOOD},
@@ -55,7 +55,7 @@ const AirQuality = () => {
                 distance: 230
             },
             {
-                value: airQuality && airQuality.o3.toFixed(0),
+                value: airQuality && airQuality.o3?.toFixed(0),
                 title: 'Озон О3',
                 points: [
                     {start: 0, finish: 80, color: MarkColors.GOOD},
@@ -66,7 +66,7 @@ const AirQuality = () => {
                 distance: 240
             },
             {
-                value: airQuality && airQuality.no2.toFixed(0),
+                value: airQuality && airQuality.no2?.toFixed(0),
                 title: 'Диоксид азота NO2',
                 points: [
                     {start: 0, finish: 70, color: MarkColors.GOOD},
@@ -77,7 +77,7 @@ const AirQuality = () => {
                 distance: 230
             },
             {
-                value: airQuality && airQuality.so2.toFixed(0),
+                value: airQuality && airQuality.so2?.toFixed(0),
                 title: 'Диоксид серы SO2',
                 points: [
                     {start: 0, finish: 70, color: MarkColors.GOOD},
@@ -88,7 +88,7 @@ const AirQuality = () => {
                 distance: 260
             },
             {
-                value: airQuality && airQuality.co.toFixed(0),
+                value: airQuality && airQuality.co?.toFixed(0),
                 title: 'Монооксид углерода CO',
                 points: [
                     {start: 0, finish: 440, color: MarkColors.GOOD},
